@@ -13,12 +13,23 @@ const Counter: React.FC = () => {
     return data.toLocaleTimeString('pt-BR', {timeZone: 'GMT'});
   }
 
-  function startTimer() {
-    timer = setInterval(function () {
+  useEffect(() => {
+    const counterInterval = setInterval(() => {
       setSeconds(seconds + 1);
-      //setCounter(getTimeFromSeconds());
-      console.log(getTimeFromSeconds());
-    }, 1000);
+      setCounter(getTimeFromSeconds());
+    });
+
+    return () => {
+      clearInterval(counterInterval);
+    };
+  }, []);
+
+  function startTimer() {
+    //timer = setInterval(function () {
+    //setSeconds(seconds + 1);
+    //setCounter(getTimeFromSeconds());
+    //console.log(getTimeFromSeconds());
+    //}, 1000);
   }
 
   const iniciarCronometro = () => {
