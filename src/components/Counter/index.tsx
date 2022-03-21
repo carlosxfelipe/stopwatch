@@ -31,13 +31,9 @@ const Counter: React.FC = () => {
     // };
   }, [start]);
 
-  function startTimer() {
-    setStart(true);
-  }
-
   const iniciarCronometro = () => {
     clearInterval(timerRef.current);
-    startTimer();
+    setStart(true);
   };
 
   const pausarCronometro = () => {
@@ -45,7 +41,7 @@ const Counter: React.FC = () => {
   };
 
   const zerarCronometro = () => {
-    // clearInterval(timerRef.current);
+    clearInterval(timerRef.current);
     setSeconds(0);
   };
 
