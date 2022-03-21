@@ -4,13 +4,13 @@ import Counter from '../../components/Counter';
 
 import {Container, Title} from './styles';
 
-const Timer = () => {
+const Stopwatch = () => {
   return (
     <Container>
       <Title>Cronômetro</Title>
-      <Counter></Counter>
+      <Counter />
     </Container>
   );
 };
 
-export default Timer;
+export default Stopwatch;

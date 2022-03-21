@@ -2,12 +2,12 @@ import React from 'react';
 
 import {View} from 'react-native';
 
-import Timer from './src/screens/Timer';
+import Stopwatch from './src/screens/Stopwatch';
 
 const App = () => {
   return (
     <View>
-      <Timer />
+      <Stopwatch />
     </View>
   );
 };
