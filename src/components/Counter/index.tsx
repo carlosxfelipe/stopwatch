@@ -25,10 +25,6 @@ const Counter: React.FC = () => {
     }, 1000);
 
     setStart(false);
-
-    // return () => {
-    //   clearInterval(counterInterval);
-    // };
   }, [start]);
 
   const iniciarCronometro = () => {
