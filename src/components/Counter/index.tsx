@@ -1,48 +1,51 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {Text, Button} from 'react-native';
 
 import {Container} from './styles';
 
 const Counter: React.FC = () => {
-  const [counter, setCounter] = useState('');
+  const timerRef = useRef(setInterval(() => {}));
+  const [counter, setCounter] = useState('a');
   const [seconds, setSeconds] = useState(0);
-  let timer;
-
-  function getTimeFromSeconds() {
-    const data = new Date(seconds * 1000);
-    return data.toLocaleTimeString('pt-BR', {timeZone: 'GMT'});
-  }
+  const [start, setStart] = useState(false);
 
   useEffect(() => {
-    const counterInterval = setInterval(() => {
-      setSeconds(seconds + 1);
-      setCounter(getTimeFromSeconds());
-    });
+    const date = new Date(seconds * 1000);
+    const formattedDate = date.toLocaleTimeString('pt-BR', {timeZone: 'GMT'});
+    setCounter(formattedDate);
+  }, [seconds]);
 
-    return () => {
-      clearInterval(counterInterval);
-    };
-  }, []);
+  useEffect(() => {
+    if (!start) {
+      return;
+    }
+
+    timerRef.current = setInterval(() => {
+      setSeconds(t => t + 1);
+    }, 1000);
+
+    setStart(false);
+
+    // return () => {
+    //   clearInterval(counterInterval);
+    // };
+  }, [start]);
 
   function startTimer() {
-    //timer = setInterval(function () {
-    //setSeconds(seconds + 1);
-    //setCounter(getTimeFromSeconds());
-    //console.log(getTimeFromSeconds());
-    //}, 1000);
+    setStart(true);
   }
 
   const iniciarCronometro = () => {
-    clearInterval(timer);
+    clearInterval(timerRef.current);
     startTimer();
   };
 
   const pausarCronometro = () => {
-    clearInterval(timer);
+    clearInterval(timerRef.current);
   };
 
   const zerarCronometro = () => {
-    clearInterval(timer);
+    // clearInterval(timerRef.current);
     setSeconds(0);
   };
 
