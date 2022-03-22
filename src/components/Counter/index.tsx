@@ -39,6 +39,7 @@ const Counter: React.FC = () => {
 
   const zerarCronometro = () => {
     clearInterval(timerRef.current);
+    setStart(false);
     setSeconds(0);
   };
 
