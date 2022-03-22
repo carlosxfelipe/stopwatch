@@ -1,22 +1,22 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {Text, Button} from 'react-native';
+import {} from 'react-native';
 
-import {Container} from './styles';
+import {Container, Text, Buttons, Button} from './styles';
 
 const Counter: React.FC = () => {
-  const timerRef = useRef(setInterval(() => {}));
-  const [counter, setCounter] = useState('a');
+  const timerRef = useRef<NodeJS.Timer>();
+  const [counter, setCounter] = useState('');
   const [seconds, setSeconds] = useState(0);
   const [start, setStart] = useState(false);
 
   useEffect(() => {
-    const date = new Date(seconds * 1000);
-    const formattedDate = date.toLocaleTimeString('pt-BR', {timeZone: 'GMT'});
+    const date = new Date(2022, 3, 22, 0, 0, seconds);
+    const formattedDate = date.toLocaleTimeString('pt-BR');
     setCounter(formattedDate);
   }, [seconds]);
 
   useEffect(() => {
-    if (!start) {
+    if (start === false) {
       return;
     }
 
@@ -24,7 +24,7 @@ const Counter: React.FC = () => {
       setSeconds(t => t + 1);
     }, 1000);
 
-    setStart(false);
+    //setStart(false);
   }, [start]);
 
   const iniciarCronometro = () => {
@@ -34,6 +34,7 @@ const Counter: React.FC = () => {
 
   const pausarCronometro = () => {
     clearInterval(timerRef.current);
+    setStart(false);
   };
 
   const zerarCronometro = () => {
@@ -44,9 +45,13 @@ const Counter: React.FC = () => {
   return (
     <Container>
       <Text>{counter}</Text>
-      <Button onPress={() => iniciarCronometro()} title="iniciar" />
-      <Button onPress={() => pausarCronometro()} title="pausar" />
-      <Button onPress={() => zerarCronometro()} title="zerar" />
+      <Buttons>
+        <Button
+          onPress={() => (start ? pausarCronometro() : iniciarCronometro())}
+          title={start ? 'pausar' : 'iniciar'}
+        />
+        <Button onPress={() => zerarCronometro()} title="zerar" />
+      </Buttons>
     </Container>
   );
 };
