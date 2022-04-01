@@ -1,7 +1,9 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {} from 'react-native';
 
-import {Container, Text, Buttons, Button} from './styles';
+import {Container, Text, Buttons} from './styles';
+
+import Button from '../Button';
 
 const Counter: React.FC = () => {
   const timerRef = useRef<NodeJS.Timer>();

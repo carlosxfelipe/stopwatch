@@ -2,12 +2,15 @@ import React from 'react';
 
 import Counter from '../../components/Counter';
 
-import {Container, Title} from './styles';
+import {Container, Header, Title} from './styles';
 
 const Stopwatch = () => {
   return (
     <Container>
-      <Title>Cronômetro</Title>
+      <Header>
+        <Title>Cronômetro</Title>
+      </Header>
+
       <Counter />
     </Container>
   );
