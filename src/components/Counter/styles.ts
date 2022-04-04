@@ -7,15 +7,12 @@ export const Container = styled.View`
 `;
 
 export const Buttons = styled.View`
-  flex-direction: column;
+  flex-direction: row;
   margin-top: 24px;
+  justify-content: space-evenly;
 `;
 
 export const Text = styled.Text`
   font-size: 64px;
   text-align: center;
-`;
-
-export const Button = styled.Button`
-  border-radius: 12px;
 `;
