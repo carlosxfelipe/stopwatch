@@ -1,5 +1,4 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {} from 'react-native';
 
 import {Container, Text, Buttons} from './styles';
 
@@ -52,8 +51,15 @@ const Counter: React.FC = () => {
         <Button
           onPress={() => (start ? pausarCronometro() : iniciarCronometro())}
           title={start ? 'pausar' : 'iniciar'}
+          color="#12A454"
+          margin={10}
         />
-        <Button onPress={() => zerarCronometro()} title="zerar" />
+        <Button
+          onPress={() => zerarCronometro()}
+          title="zerar"
+          color="#E83F5B"
+          margin={10}
+        />
       </Buttons>
     </Container>
   );

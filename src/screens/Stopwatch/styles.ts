@@ -1,11 +1,11 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
+  background-color: white;
   flex: 1;
 `;
 
 export const Header = styled.View`
-  background-color: #5636d3;
   width: 100%;
   height: 12%;
   align-items: center;
@@ -14,6 +14,7 @@ export const Header = styled.View`
 `;
 
 export const Title = styled.Text`
-  color: white;
-  font-size: 18px;
+  color: black;
+  font-family: 'Ubuntu-Medium';
+  font-size: 24px;
 `;
