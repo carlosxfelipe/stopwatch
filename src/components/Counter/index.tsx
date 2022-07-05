@@ -1,11 +1,11 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
+import BackgroundTimer from 'react-native-background-timer';
 
 import {Container, Text, Buttons} from './styles';
 
 import Button from '../Button';
 
 const Counter: React.FC = () => {
-  const timerRef = useRef<NodeJS.Timer>();
   const [counter, setCounter] = useState('');
   const [seconds, setSeconds] = useState(0);
   const [start, setStart] = useState(false);
@@ -21,25 +21,21 @@ const Counter: React.FC = () => {
       return;
     }
 
-    timerRef.current = setInterval(() => {
+    BackgroundTimer.runBackgroundTimer(() => {
       setSeconds(t => t + 1);
     }, 1000);
-
-    //setStart(false);
   }, [start]);
 
   const iniciarCronometro = () => {
-    clearInterval(timerRef.current);
     setStart(true);
   };
 
   const pausarCronometro = () => {
-    clearInterval(timerRef.current);
+    BackgroundTimer.stopBackgroundTimer();
     setStart(false);
   };
 
   const zerarCronometro = () => {
-    clearInterval(timerRef.current);
     setStart(false);
     setSeconds(0);
   };

@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
 
 type ContainerProps = {
-  color: string;
-  margin: number;
+  color?: string;
+  margin?: number;
 };
 
 export const Container = styled.View<ContainerProps>`

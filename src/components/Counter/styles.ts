@@ -13,9 +13,13 @@ export const Buttons = styled.View`
   justify-content: space-evenly;
 `;
 
-export const Text = styled.Text`
+export const Text = styled.Text.attrs({
+  numberOfLines: 1,
+  adjustsFontSizeToFit: true,
+})`
   color: black;
   font-family: 'Ubuntu-Medium';
+  text-align: left;
   font-size: 64px;
   text-align: center;
 `;
